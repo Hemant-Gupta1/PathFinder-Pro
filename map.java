@@ -614,7 +614,7 @@ public class map{
 	
 	
 	public static void main(String[] args) throws IOException{
-		System.out.println("WELCOOME TO MAP NAVIGATION SYSTEM. HERE YOU CAN DO ALL THESE.");
+		System.out.println("WELCOME TO MAP NAVIGATION SYSTEM. HERE YOU CAN DO ALL THESE.");
 		// Create an instance of the Graph_M class to represent the metro map
 		map grph = new map();
 
