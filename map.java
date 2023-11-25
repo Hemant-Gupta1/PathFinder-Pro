@@ -433,7 +433,6 @@ public class map{
 
 	/**
 	 * Extracts and identifies interchange stations from a formatted string.
-	 * @param s A string representing metro stations and lines.
 	 * @return An ArrayList containing interchange information.
 	 */
 	public ArrayList<String> inter_fetch(String s){
