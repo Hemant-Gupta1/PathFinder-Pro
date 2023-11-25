@@ -500,49 +500,50 @@ public class map{
 
 		
 	public static void make_map_graph(map mp){
-		// Adding metro stations along with their lines to the graph
-		mp.node_adddition("Noida Sector 62~B");
-		mp.node_adddition("Botanical Garden~B");
-		mp.node_adddition("Yamuna Bank~B");
-		mp.node_adddition("Rajiv Chowk~BY");
-		mp.node_adddition("Vaishali~B");
-		mp.node_adddition("Moti Nagar~B");
-		mp.node_adddition("Janak Puri West~BO");
-		mp.node_adddition("Dwarka Sector 21~B");
-		mp.node_adddition("Huda City Center~Y");
-		mp.node_adddition("Saket~Y");
-		mp.node_adddition("Vishwavidyalaya~Y");
-		mp.node_adddition("Chandni Chowk~Y");
-		mp.node_adddition("New Delhi~YO");
-		mp.node_adddition("AIIMS~Y");
-		mp.node_adddition("Shivaji Stadium~O");
-		mp.node_adddition("DDS Campus~O");
-		mp.node_adddition("IGI Airport~O");
-		mp.node_adddition("Rajouri Garden~BP");
-		mp.node_adddition("Netaji Subhash Place~PR");
-		mp.node_adddition("Punjabi Bagh West~P");
+		// Adding metro stations to the graph
+		mp.node_adddition("A~Y");
+		mp.node_adddition("B~B");
+		mp.node_adddition("C~Y");
+		mp.node_adddition("D 21~B");
+		mp.node_adddition("H~Y");
+		mp.node_adddition("I~O");
+		mp.node_adddition("J~BO");
+		mp.node_adddition("M~B");
+		mp.node_adddition("N 62~B");
+		mp.node_adddition("P~P");
+		mp.node_adddition("R~BY");
+		mp.node_adddition("S~Y");
+		mp.node_adddition("V~B");
+		mp.node_adddition("Y~B");
+		mp.node_adddition("Vi~Y");
+		mp.node_adddition("Ne~YO");
+		mp.node_adddition("Sh~O");
+		mp.node_adddition("DD~O");
+		mp.node_adddition("Ra~BP");
+		mp.node_adddition("Net~PR");
+		
 		
 	
 		// Adding edges between metro stations with travel distance
-		mp.addEdge("Noida Sector 62~B", "Botanical Garden~B", 8);
-		mp.addEdge("Botanical Garden~B", "Yamuna Bank~B", 10);
-		mp.addEdge("Yamuna Bank~B", "Vaishali~B", 8);
-		mp.addEdge("Yamuna Bank~B", "Rajiv Chowk~BY", 6);
-		mp.addEdge("Rajiv Chowk~BY", "Moti Nagar~B", 9);
-		mp.addEdge("Moti Nagar~B", "Janak Puri West~BO", 7);
-		mp.addEdge("Janak Puri West~BO", "Dwarka Sector 21~B", 6);
-		mp.addEdge("Huda City Center~Y", "Saket~Y", 15);
-		mp.addEdge("Saket~Y", "AIIMS~Y", 6);
-		mp.addEdge("AIIMS~Y", "Rajiv Chowk~BY", 7);
-		mp.addEdge("Rajiv Chowk~BY", "New Delhi~YO", 1);
-		mp.addEdge("New Delhi~YO", "Chandni Chowk~Y", 2);
-		mp.addEdge("Chandni Chowk~Y", "Vishwavidyalaya~Y", 5);
-		mp.addEdge("New Delhi~YO", "Shivaji Stadium~O", 2);
-		mp.addEdge("Shivaji Stadium~O", "DDS Campus~O", 7);
-		mp.addEdge("DDS Campus~O", "IGI Airport~O", 8);
-		mp.addEdge("Moti Nagar~B", "Rajouri Garden~BP", 2);
-		mp.addEdge("Punjabi Bagh West~P", "Rajouri Garden~BP", 2);
-		mp.addEdge("Punjabi Bagh West~P", "Netaji Subhash Place~PR", 3);
+		mp.addEdge("Ne~YO", "Sh~O", 2);
+		mp.addEdge("Sh~O", "DD~O", 7);
+		mp.addEdge("N 62~B", "B~B", 8);
+		mp.addEdge("M~B", "J~BO", 7);
+		mp.addEdge("P~P", "Ra~BP", 2);
+		mp.addEdge("P~P", "Net~PR", 3);
+		mp.addEdge("S~Y", "A~Y", 6);
+		mp.addEdge("J~BO", "D 21~B", 6);
+		mp.addEdge("H~Y", "S~Y", 15);
+		mp.addEdge("C~Y", "Vi~Y", 5);
+		mp.addEdge("A~Y", "R~BY", 7);
+		mp.addEdge("B~B", "Y~B", 10);
+		mp.addEdge("Y~B", "V~B", 8);
+		mp.addEdge("DD~O", "I~O", 8);
+		mp.addEdge("M~B", "Ra~BP", 2);
+		mp.addEdge("Y~B", "R~BY", 6);
+		mp.addEdge("R~BY", "M~B", 9);
+		mp.addEdge("R~BY", "Ne~YO", 1);
+		mp.addEdge("Ne~YO", "C~Y", 2);
 	}
 		
 		
