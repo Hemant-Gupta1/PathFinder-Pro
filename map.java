@@ -351,91 +351,93 @@ public class map{
 		String vname;
 	}
 
-		/**
-	 * Finds the minimum time path between source and dtination stations in the metro network.
-	 * @param s Source station name.
-	 * @param d dtination station name.
-	 * @return A string containing the minimum time path and the total time in minutes.
-	 */
-	public String Get_Minimum_Time(String s, String d){
-		// Create a LinkedList to act as a stck for depth-first search
-		LinkedList<Pair> stck = new LinkedList<>();
+	// 	/**
+	//  * Finds the minimum time path between source and dtination stations in the metro network.
+	//  * @param s Source station name.
+	//  * @param d dtination station name.
+	//  * @return A string containing the minimum time path and the total time in minutes.
+	//  */
+	// public String Get_Minimum_Time(String s, String d){
+	// 	// Create a LinkedList to act as a stck for depth-first search
+	// 	LinkedList<Pair> stck = new LinkedList<>();
 
-		// Initialize variables to track minimum time and the corresponding path
-		int min=Integer.MAX_VALUE;
-		String list="";
+	// 	// Initialize variables to track minimum time and the corresponding path
+	// 	int min=Integer.MAX_VALUE;
+	// 	String list="";
 		
-		// Create a HashMap to keep track of vtcs_done vertices
-		HashMap<String, Boolean> vtcs_done = new HashMap<>();
+	// 	// Create a HashMap to keep track of vtcs_done vertices
+	// 	HashMap<String, Boolean> vtcs_done = new HashMap<>();
 		
-		// Create a new pair for the source station and initialize it
-		Pair sp = new Pair();
+	// 	// Create a new pair for the source station and initialize it
+	// 	Pair sp = new Pair();
 
-		sp.vname = s;
-		sp.psf = s + "  ";
-		sp.min_dis = 0;
-		sp.min_time = 0;
+	// 	sp.vname = s;
+	// 	sp.psf = s + "  ";
+	// 	sp.min_dis = 0;
+	// 	sp.min_time = 0;
 		
-		// Add the source pair to the stack
-		stck.addFirst(sp);
+	// 	// Add the source pair to the stack
+	// 	stck.addFirst(sp);
 
-		// Perform depth-first search until the stck is empty
-		while (!stck.isEmpty()){
-			// Remove a pair from the stack
-			Pair p_util = stck.removeFirst();
+	// 	// Perform depth-first search until the stck is empty
+	// 	while (!stck.isEmpty()){
+	// 		// Remove a pair from the stack
+	// 		Pair p_util = stck.removeFirst();
 
-			// Check if the node is already vtcs_done, if yes, skip
-			if (vtcs_done.containsKey(p_util.vname)) continue;
+	// 		// Check if the node is already vtcs_done, if yes, skip
+	// 		if (vtcs_done.containsKey(p_util.vname)) continue;
 			
 
-			// Mark the node as vtcs_done
-			vtcs_done.put(p_util.vname, true);
+	// 		// Mark the node as vtcs_done
+	// 		vtcs_done.put(p_util.vname, true);
 
-			// Check if the removed pair corresponds to the destination node
-			if (p_util.vname.equals(d)){
-				int tmp = p_util.min_time;
-				if (tmp < min){
-					list = p_util.psf;
-					min = tmp;
-				}
-				continue;
-			}
+	// 		// Check if the removed pair corresponds to the destination node
+	// 		if (p_util.vname.equals(d)){
+	// 			int tmp = p_util.min_time;
+	// 			if (tmp < min){
+	// 				list = p_util.psf;
+	// 				min = tmp;
+	// 			}
+	// 			continue;
+	// 		}
 
-			// Get the node object corresponding to the removed pair
-			node rm_pair_obj = vtcs_util.get(p_util.vname);
+	// 		// Get the node object corresponding to the removed pair
+	// 		node rm_pair_obj = vtcs_util.get(p_util.vname);
 			
-			// Get the neighbors of the current node
-			ArrayList<String> pseudo_hm_node = new ArrayList<>(rm_pair_obj.pseudo_hm_node.keySet());
+	// 		// Get the neighbors of the current node
+	// 		ArrayList<String> pseudo_hm_node = new ArrayList<>(rm_pair_obj.pseudo_hm_node.keySet());
 
-			// Iterate through the neighbors
-			for (String nbr : pseudo_hm_node){
-				// Process only unvtcs_done neighbors
-				if (!vtcs_done.containsKey(nbr)){
-					// Create a new pair for the neighbor and add it to the stck
-					Pair psdo = new Pair();
-					psdo.vname = nbr;
-					psdo.psf = p_util.psf + nbr + "  ";
-					psdo.min_time = p_util.min_time + 120 + 40 * rm_pair_obj.pseudo_hm_node.get(nbr);
-					stck.addFirst(psdo);
-				}
-			}
-		}
+	// 		// Iterate through the neighbors
+	// 		for (String nbr : pseudo_hm_node){
+	// 			// Process only unvtcs_done neighbors
+	// 			if (!vtcs_done.containsKey(nbr)){
+	// 				// Create a new pair for the neighbor and add it to the stck
+	// 				Pair psdo = new Pair();
+	// 				psdo.vname = nbr;
+	// 				psdo.psf = p_util.psf + nbr + "  ";
+	// 				psdo.min_time = p_util.min_time + 120 + 40 * rm_pair_obj.pseudo_hm_node.get(nbr);
+	// 				stck.addFirst(psdo);
+	// 			}
+	// 		}
+	// 	}
 
-		// Convert the minimum time to minutes (ceiling finue)
-		Double minutes = Math.ceil((double)min / 60);
+	// 	// Convert the minimum time to minutes (ceiling finue)
+	// 	Double minutes = Math.ceil((double)min / 60);
 
-		// Append the total time in minutes to the result string
-		list=list+Double.toString(minutes);
+	// 	// Append the total time in minutes to the result string
+	// 	list=list+Double.toString(minutes);
 
-		// Return the result string
-		return list;
-	}
+	// 	// Return the result string
+	// 	return list;
+	// }
 
 	/**
 	 * Extracts and identifies interchange stations from a formatted string.
 	 * @return An ArrayList containing interchange information.
 	 */
 	public ArrayList<String> inter_fetch(String s){
+
+		// System.out.println(s);
 		// Initialize a freq variable to keep track of the number of interchanges
 		int freq = 0;
 
@@ -476,7 +478,7 @@ public class map{
 				} 
 				else{
 					// If they are different, add a formatted interchange information to the ArrayList
-					inter_info.add(ans[i] + " ==> " + ans[i + 1]);
+					inter_info.add(ans[i] + " -> " + ans[i + 1]);
 					
 					// Increment the interchange cnt
 					freq++;
@@ -493,7 +495,7 @@ public class map{
 		// Add the interchange cnt to the ArrayList
 		inter_info.add(Integer.toString(freq));
 		
-		// Add the last element (final station) to the ArrayList
+		
 		inter_info.add(ans[ans.length - 1]);
 		
 		// Return the ArrayList containing interchange information
@@ -577,40 +579,48 @@ public class map{
 		
 	public static void make_map_graph(map mp){
 		// Adding metro stations along with their lines to the graph
-		mp.node_adddition("A 62~B");
-		mp.node_adddition("B~B");
-		mp.node_adddition("C~BY");
-		mp.node_adddition("D~B");
-		mp.node_adddition("E~BO");
-		mp.node_adddition("F~Y");
-		mp.node_adddition("G~Y");
-		mp.node_adddition("H~Y");
-		mp.node_adddition("I~YO");
-		mp.node_adddition("J~O");
+		mp.node_adddition("Noida Sector 62~B");
+		mp.node_adddition("Botanical Garden~B");
+		mp.node_adddition("Yamuna Bank~B");
+		mp.node_adddition("Rajiv Chowk~BY");
+		mp.node_adddition("Vaishali~B");
+		mp.node_adddition("Moti Nagar~B");
+		mp.node_adddition("Janak Puri West~BO");
+		mp.node_adddition("Dwarka Sector 21~B");
+		mp.node_adddition("Huda City Center~Y");
+		mp.node_adddition("Saket~Y");
+		mp.node_adddition("Vishwavidyalaya~Y");
+		mp.node_adddition("Chandni Chowk~Y");
+		mp.node_adddition("New Delhi~YO");
+		mp.node_adddition("AIIMS~Y");
+		mp.node_adddition("Shivaji Stadium~O");
+		mp.node_adddition("DDS Campus~O");
+		mp.node_adddition("IGI Airport~O");
+		mp.node_adddition("Rajouri Garden~BP");
+		mp.node_adddition("Netaji Subhash Place~PR");
+		mp.node_adddition("Punjabi Bagh West~P");
 		
 	
-		// Adding edges between metro stations with travel times
-		mp.addEdge("A 62~B", "B~B", 8);
-		mp.addEdge("B~B", "C~BY", 15);
-		mp.addEdge("C~BY", "D~B", 1);
-		mp.addEdge("D~B", "E~BO", 2);
-		mp.addEdge("E~BO", "F~Y", 2);
-		mp.addEdge("F~Y","G~Y",12);
-		mp.addEdge("G~Y","H~Y",17);
-		mp.addEdge("H~Y","I~YO",19);
-		mp.addEdge("I~YO","J~O",22);
-		mp.addEdge("J~O","A 62~B",2);
-		mp.addEdge("A~ 62B","I~YO",23);
-		mp.addEdge("F~Y","G~Y",12);
-		mp.addEdge("J~O","B~B",8);
-		mp.addEdge("I~YO","C~BY",13);
-		mp.addEdge("F~Y","G~Y",12);
-		mp.addEdge("H~Y","B~B",11);
-		mp.addEdge("B~B","G~Y",10);
-		mp.addEdge("C~BY","I~YO",12);
-		mp.addEdge("B~B","E~BO",12);
-		mp.addEdge("C~BY","G~Y",12);
-		mp.addEdge("E~BO","G~Y",12);
+		// Adding edges between metro stations with travel distance
+		mp.addEdge("Noida Sector 62~B", "Botanical Garden~B", 8);
+		mp.addEdge("Botanical Garden~B", "Yamuna Bank~B", 10);
+		mp.addEdge("Yamuna Bank~B", "Vaishali~B", 8);
+		mp.addEdge("Yamuna Bank~B", "Rajiv Chowk~BY", 6);
+		mp.addEdge("Rajiv Chowk~BY", "Moti Nagar~B", 9);
+		mp.addEdge("Moti Nagar~B", "Janak Puri West~BO", 7);
+		mp.addEdge("Janak Puri West~BO", "Dwarka Sector 21~B", 6);
+		mp.addEdge("Huda City Center~Y", "Saket~Y", 15);
+		mp.addEdge("Saket~Y", "AIIMS~Y", 6);
+		mp.addEdge("AIIMS~Y", "Rajiv Chowk~BY", 7);
+		mp.addEdge("Rajiv Chowk~BY", "New Delhi~YO", 1);
+		mp.addEdge("New Delhi~YO", "Chandni Chowk~Y", 2);
+		mp.addEdge("Chandni Chowk~Y", "Vishwavidyalaya~Y", 5);
+		mp.addEdge("New Delhi~YO", "Shivaji Stadium~O", 2);
+		mp.addEdge("Shivaji Stadium~O", "DDS Campus~O", 7);
+		mp.addEdge("DDS Campus~O", "IGI Airport~O", 8);
+		mp.addEdge("Moti Nagar~B", "Rajouri Garden~BP", 2);
+		mp.addEdge("Punjabi Bagh West~P", "Rajouri Garden~BP", 2);
+		mp.addEdge("Punjabi Bagh West~P", "Netaji Subhash Place~PR", 3);
 	}
 		
 		
@@ -697,54 +707,19 @@ public class map{
 			
 			// Display menu options
 			
-			System.out.println("1. GET SHORTEST DISTANCE PATH TO REACH FROM SOURCE TO DESTINATION"); 
-			System.out.println("2. GET SHORTEST TIME PATH TO REACH FROM SOURCE TO DESTINATION"); 
-			System.out.println("3. GET SHORTEST TIME TO REACH FROM SOURCE TO DESTINATION"); 
-			System.out.println("4. GET SHORTEST DISTANCE FROM SOURCE TO DESTINATION"); 
-			System.out.println("5. SHOW THE MAP");  
-			System.out.println("6. LIST ALL THE STATIONS IN THE MAP"); 
-			System.out.println("7. EXIT THE MENU");
+			System.out.println("1. GET SHORTEST DISTANCE PATH TO REACH FROM SOURCE TO DESTINATION");  
+			System.out.println("2. GET SHORTEST DISTANCE FROM SOURCE TO DESTINATION"); 
+			System.out.println("3. SHOW THE MAP");  
+			System.out.println("4. LIST ALL THE STATIONS IN THE MAP"); 
+			System.out.println("5. EXIT THE MENU");
 
 			System.out.println("\nEnter your choice. ");
 			
 			int choice = Integer.parseInt(ipsdo.readLine());
 			
-			if(choice == 7) System.exit(0);
+			if(choice == 5) System.exit(0);
 			
 			switch(choice){
-				case 2:
-					// Get shortest path (time-wise) between source and destination stations
-					
-
-					System.out.print("Enter source: ");
-					String ss1 = ipsdo.readLine();
-					System.out.print("Enter destination: ");
-					String ss2 = ipsdo.readLine();
-				
-					HashMap<String, Boolean> vtcs_done3 = new HashMap<>();
-
-					if(!grph.checkNodeOrNot(ss1) || !grph.checkNodeOrNot(ss2) || !grph.checkPathOrNot(ss1, ss2, vtcs_done3)) System.out.println("Input is inavlid.");{
-						ArrayList<String> str = grph.inter_fetch(grph.Get_Minimum_Time(ss1, ss2));
-
-						int siz = str.size();
-
-						System.out.println("SOURCE: " + ss1);
-						System.out.println("DESTINATION: " + ss2);
-						System.out.println("TIME : " + str.get(siz-1)+" mins");
-						System.out.println("NUMBER OF INTERCHANGES : " + str.get(siz-2));
-						
-						
-						System.out.print("START  ->  " + str.get(0) + " ->  ");
-						for(int i=1; i<siz-3; i++) System.out.println(str.get(i));
-						
-						System.out.println(str.get(siz-3) + "   ->    END");
-						
-					}
-					break;	
-						default:  
-								
-								System.out.println("Please enter a valid option! ");
-								
 				
 				case 1:
 					// Get shortest path (distance-wise) between source and destination stations
@@ -763,36 +738,21 @@ public class map{
 						int siz = str.size();
 
 						System.out.println("SOURCE : " + s1);
-						System.out.println("SOURCE : " + s2);
-						System.out.println("DISTANCE : " + str.get(siz-1));
+						System.out.println("DESTINATION : " + s2);
+						System.out.println("DISTANCE : " + str.get(siz-1)+"KM");
 						System.out.println("NUMBER OF INTERCHANGES : " + str.get(siz-2));
 						
 						
 						System.out.println("START  ->  " + str.get(0));
 						for(int i=1; i<siz-3; i++) System.out.println(str.get(i));
 						
-						System.out.print(str.get(siz-3) + "   ->    END");
+						System.out.println(str.get(siz-3) + "   ->	END");
 						
 					}
 					break;
 				
-				case 3:
-					// Get shortest time between source and destination stations
-					// use dij_algo's algorithm to find the shortest time
-					// Print the result
-					System.out.print("Enter source: ");
-					String stn1 = ipsdo.readLine();
-
-					System.out.print("Enter destination: ");
-
-					String stn2 = ipsdo.readLine();
 				
-					HashMap<String, Boolean> vtcs_done1= new HashMap<>();				
-					System.out.println("SHORTEST TIME FROM ("+stn1+") TO ("+stn2+") IS "+grph.dij_algo(stn1, stn2, true)/60+" mins\n\n");
-					break;
-				
-				
-				case 4:
+				case 2:
 					// Get shortest distance between source and dtination stations
 					
 					// Print the result
@@ -847,12 +807,12 @@ public class map{
 					else System.out.println("SHORTEST DISTANCE FROM "+st1+" TO "+st2+" IS "+grph.dij_algo(st1, st2, false)+"km\n");
 					break;
 				
-				case 5:
+				case 3:
 					// display full map
 					grph.display_Map();
 					break;
 
-				case 6:
+				case 4:
 					// display all stations
 					grph.display_Stations();
 					break;
