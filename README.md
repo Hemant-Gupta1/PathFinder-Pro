@@ -1,7 +1,7 @@
-# TechSarathiInternship_MapNav
+# PathFinder Pro
 
 # Github Link: 
-https://github.com/Hemant-Gupta1/TechSarathiInternship_MapNav
+https://github.com/Hemant-Gupta1/PathFinder-Pro
 
 # Features:
 The Java code that is provided uses a graph data structure to construct a metro map system. 
