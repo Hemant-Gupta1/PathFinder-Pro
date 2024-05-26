@@ -13,7 +13,7 @@ framework for metro network management and analysis.
 
 # Technologies used:
 Java
-#Instructions to Run
+# Instructions to Run
 1. Put all files in folder. Let it be A'
 2. javac A/Heap.java
 3. javac -cp . A/map.java
