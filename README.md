@@ -1,6 +1,6 @@
 # PathFinder Pro
 
-# Github Link: 
+# GitHub Link: 
 https://github.com/Hemant-Gupta1/PathFinder-Pro
 
 # Features:
