@@ -1,0 +1,3 @@
+    Developed an advanced metro map navigation system in Java, leveraging graph data structures for dynamic station and connection management, optimized with a custom heap implementation for efficient pathfinding using Dijkstra's algorithm.
+    Implemented key features including shortest path calculation, interchange identification, and graph manipulation methods, ensuring scalability for future network expansions.
+    Designed a command-line interface for user interaction, enabling visualization of metro maps, station listing, and optimal route suggestions, showcasing strong data structures and algorithmic problem-solving skills.
